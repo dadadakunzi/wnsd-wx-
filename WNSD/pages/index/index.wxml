@@ -1,0 +1,67 @@
+
+<!-- <view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view> -->
+
+<view class=' search_box'>
+<input  class='inp_search'  type='text' placeholder='搜索朗诵人/诗歌名' placeholder-style='font-size:10px;text-align: center;line-height:10px'></input>
+</view>
+<!-- 轮播 -->
+<view class='homepage'>
+  <swiper class='lunbo' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" >
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <navigator url="{{item.link}}" hover-class="navigator-hover">
+          <image src="{{item.url}}" class="slide-image" width="355" height="150" />
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  </view>
+
+  <!-- 伴奏表单 -->
+  <swiper current="{{activeIndex}}" duration="300" bindchange="bindChange" class='swiper' style='height:{{height}}rpx' id='item0' scroll-y>
+
+  
+  
+    <swiper-item class='swiper-item' id='item2' data-index='{{activeIndex}}'>
+      <view class='allOfpeople'>
+        <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+         
+            <block wx:for="{{navData2}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+            <view class="nav-item {{currentTab2 == idx ?'active':''}}"  data-current="{{idx}} " bindtap="switchNav2" data-chanpin="{{navItem.id}}" >{{navItem.typeName}}</view>
+          </block>
+        </scroll-view>
+        
+        <!-- <scroll-view class="icon-list">
+          <view wx:for="{{getknowledge}}" class="row-flex list-item">
+            <view class='toplist2' bindtap='toapply2'  data-id="{{item.id}}" >
+              <view class='knowledge' >
+                <image src='{{"http://zadai.net:8000"+item.image}}'></image>
+              </view>
+
+              <view class='knowledge_r'>
+                <view class='knowledge_rt'>{{item.title}}</view>
+
+                <view class='knowledge_rb'>
+                  <view class='knowledge_rbl'>{{item.typeName}} </view>
+                  <view class='knowledge_rbr'>{{item.creationTime}} </view>
+                </view>
+  
+              </view>
+
+            </view>
+          </view>
+        </scroll-view> -->
+      </view>
+    </swiper-item>
+  </swiper>
